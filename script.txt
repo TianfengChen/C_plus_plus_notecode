@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+//function template
+template <typename T>
+void Swap(T &n1, T &n2)
+{
+    T temp;
+    temp = n1;
+    n1 = n2;
+    n2 = temp;
+}
+
+//class template
+template <typename T, int size>
+class Array
+{
+private:
+    T array[size];
+public:
+    T& operator[](int i){
+        return array[i];
+    }
+    void print();
+    Array(T a[size]){
+        for(int i = 0; i < size; i++){
+            array[i] = a[i];
+        }
+    }
+    ~Array(){}
+};
+
+template <typename T, int size>
+void Array<T, size>::print(){
+    for(int i = 0; i < size; i++){
+        cout << array[i] << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    //function template
+    int a = 1, b = 2;
+    Swap(a, b);
+    cout << a << " " << b << endl;
+    double c = 1.1, d = 2.2;
+    Swap(c, d);
+    cout << c << " " << d << endl;
+
+    //class template
+    double k[5] = {1.0, 2.0, 3.0, 4.0, 5.0};
+    Array <double, 5> arr(k);
+    arr.print();
+}
