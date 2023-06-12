@@ -18,11 +18,13 @@ class CRectangle
         //int GetTotalArea2() {return TotalArea;} //non-static member function can not access static member
 };
 
-int CRectangle::TotalArea = 0; //static member must be initialized outside class, to be specific, in class define file
+int CRectangle::TotalArea = 0; //static member must be initialized outside class, to be specific, in class define file(.cpp, main.cpp)
 
 int main()
 {
 
     CRectangle r1(3, 3), r2(2, 2);
     cout<< CRectangle::GetTotalArea() << endl; //static member function can be called by class name
+    cout<< r1.GetTotalArea() << endl; //static member function can be called by object
+    cout<<CRectangle::TotalArea<<endl; //static member can be called by class name
 }

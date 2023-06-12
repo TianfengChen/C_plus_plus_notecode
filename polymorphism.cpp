@@ -5,7 +5,7 @@ using namespace std;
 class Creature
 {
     public:
-    virtual void thrive() = 0;//Pure Virtual Function, this class is abstract class
+    virtual void thrive() = 0;//Pure Virtual Function, this class is abstract class, abstract class can not be instantiated
     void Call_Pure(){
         this->thrive();//ok
     }
@@ -23,7 +23,7 @@ class Animal:public Creature
     virtual void VirtualFunc(){
         cout << "Animal::VirtualFunc" << endl;
     }
-    void thrive(){
+    void thrive(){//no need to be virtual
         cout<<"the Pure Virtual Fuction of Base is defined in Derived Class"<<endl;
     }
     virtual ~Animal(){
@@ -93,5 +93,6 @@ int main()
     //dog4->VirtualFunc();//dog4 is a empty pointer, segmentation fault
     
     //Pure Virtual Function
+    //Creature c;//error
     return 0;
 }
